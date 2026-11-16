@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuaderno Digital · Mi almacén</title>
+  <meta name="description" content="Prototipo de inventario para un almacén de barrio. Registra ventas, reposiciones y consulta qué productos están por acabarse.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#productos"><span class="brand-icon" aria-hidden="true">▤</span><span>Cuaderno<br><strong>Digital<span class="brand-dot">.</span></strong></span></a>
+    <div class="store"><span class="store-avatar" aria-hidden="true">R</span><div><strong>Almacén de Rosa</strong><span>Mi negocio</span></div></div>
+    <p class="nav-label">MI CUADERNO</p>
+    <nav aria-label="Navegación principal">
+      <a href="#productos" data-nav="productos"><span aria-hidden="true">▦</span> Mis productos</a>
+      <a href="#reponer" data-nav="reponer"><span aria-hidden="true">↻</span> Por reponer <b id="nav-count">3</b></a>
+      <a href="#historial" data-nav="historial"><span aria-hidden="true">◷</span> Movimientos</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="note-mark" aria-hidden="true">✳</div><strong>Tu almacén, en orden.</strong><p>Menos anotaciones.<br>Más tiempo para atender.</p><button class="help-link" id="help">¿Cómo se usa? <span aria-hidden="true">↗</span></button></div>
+    <div class="prototype-tag">PROTOTIPO ACADÉMICO · IHC</div>
+  </aside>
+  <main>
+    <header class="topbar"><span class="breadcrumb">Mi negocio <span aria-hidden="true">/</span> <strong id="crumb">Mis productos</strong></span><span class="local-save"><i aria-hidden="true"></i> Guardado en este dispositivo</span></header>
+    <div class="main-content">
+      <section class="page-heading"><div><p class="eyebrow">EL CUADERNO DE CADA DÍA</p><h1 id="page-title">Mis productos</h1><p class="subtitle" id="page-subtitle">Todo lo que tienes, a simple vista.</p></div><button class="button primary add-button" id="add-product"><span aria-hidden="true">＋</span> Agregar producto</button></section>
+      <div id="summary" class="summary"></div>
+      <section id="inventory-section" aria-label="Inventario de productos">
+        <div class="section-toolbar"><div class="tabs" aria-label="Filtrar productos"><button class="tab active" data-filter="todos" aria-pressed="true">Todos <span id="all-count">8</span></button><button class="tab" data-filter="favoritos" aria-pressed="false">★ Más vendidos</button></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un producto…" aria-label="Buscar un producto"></label></div>
+        <div class="inventory-note"><span aria-hidden="true">☝</span> Toca un producto para registrar una venta o la llegada de mercadería.</div>
+        <div id="products" class="product-grid"></div>
+        <div class="list-footer"><span id="list-count"></span><span>Hecho para el ritmo de tu almacén.</span></div>
+      </section>
+      <section id="history-section" hidden aria-label="Historial de movimientos"><div class="history-toolbar"><h2>Las anotaciones de tu negocio</h2><button class="button secondary" id="export">Descargar registro</button></div><div id="history"></div></section>
+      <footer class="main-footer"><span><strong>Cuaderno Digital</strong> · Cada movimiento cuenta.</span><button id="demo-reset">Reiniciar demostración</button></footer>
+    </div>
+  </main>
+</div>
+<dialog id="product-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="modal-head"><span class="eyebrow">UNA AYUDA PARA EMPEZAR</span><button class="icon-button" data-close="help-dialog" aria-label="Cerrar ayuda">×</button></div><h2 id="help-title">Como tu cuaderno.<br>Mucho más fácil.</h2><ol class="help-steps"><li><strong>Busca el producto</strong><p>Toca una tarjeta o escribe su nombre en el buscador.</p></li><li><strong>Elige qué pasó</strong><p>“Vendí” descuenta unidades. “Llegó mercadería” las suma.</p></li><li><strong>Revisa y confirma</strong><p>Ajusta la cantidad y confirma. Si te equivocas, usa “Deshacer”.</p></li></ol><div class="soft-note">“Por reponer” reúne lo que está por acabarse. Los datos de esta demostración son ficticios y se guardan solo en este navegador.</div><button class="button primary full" data-close="help-dialog">Entendido, vamos a los productos</button></dialog>
+<dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">¿Volver al ejemplo inicial?</h2><p>Se reemplazarán los productos y movimientos de esta demostración por los datos de ejemplo.</p><div class="modal-actions"><button class="button secondary" data-close="reset-dialog">Conservar mis cambios</button><button class="button primary" id="confirm-reset">Reiniciar ejemplo</button></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
